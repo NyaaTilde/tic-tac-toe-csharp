@@ -21,25 +21,42 @@ namespace tic_tac_toe
 	public partial class MainWindow : Window
 	{
         private Logic logic;
+        private int xWins, oWins;
+
+        private Button[] buttons;
 
 		public MainWindow()
 		{
 			InitializeComponent();
+            buttons = new Button[] { button0, button1, button2, button3, button4, button5, button6, button7, button8 };
             start_game();
 		}
 
         private void start_game()
         {
             logic = new Logic();
-            button0.Content = "";
-            button1.Content = "";
-            button2.Content = "";
-            button3.Content = "";
-            button4.Content = "";
-            button5.Content = "";
-            button6.Content = "";
-            button7.Content = "";
-            button8.Content = "";
+            logic.OnGameEnd += game_victory;
+
+            foreach (Button b in buttons)
+                b.Content = "";
+            PlayerTurn.Content = "X";
+            PlayerTurn.Foreground = Brushes.Red;
+        }
+
+        private void game_victory(Logic l, PlayerValue who)
+        {
+            if (who == PlayerValue.Circle)
+            {
+                MessageBox.Show("Cirles are best!");
+            }
+            else if (who == PlayerValue.Cross)
+            {
+                MessageBox.Show("Crosses are awesome!");
+            }
+            else
+            {
+                MessageBox.Show("You both suck!");
+            }
         }
 
         private void button_MouseLeftButtonUp(object sender, RoutedEventArgs e)
@@ -68,7 +85,6 @@ namespace tic_tac_toe
 
             if (logic.ChangeState(number))
                 change_button(button, currentPlayer);
-            
         }
 
         private void change_button(Control control, PlayerValue player)
