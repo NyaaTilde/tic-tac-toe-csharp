@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="640" Width="1020" Background="#FF23FFC3">
     <Grid Margin="0,0,0,3">
-        <Rectangle Fill="#FF0085F3" HorizontalAlignment="Left" Height="518" Margin="54,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="874" StrokeThickness="8"/>
+        <Rectangle Fill="#FF0085F3" HorizontalAlignment="Left" Height="518" Margin="58,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="874" StrokeThickness="8"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="244" Margin="388,80,0,0" RenderTransformOrigin="0.5,0.5" FontFamily="Viner Hand ITC" FontSize="48">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -16,7 +16,7 @@
         <Button x:Name="gameButton" Content="New Game" HorizontalAlignment="Left" Margin="701,436,0,0" VerticalAlignment="Top" Width="170" Height="54" FontSize="24" FontFamily="Showcard Gothic" Click="gameButton_Click"/>
 <!--<<<<<<< Updated upstream-->
         <Label Content="Player Turn: " HorizontalAlignment="Left" Margin="77,400,0,0" VerticalAlignment="Top" Height="72" Width="234" FontSize="36" Foreground="#FFAE0000" FontWeight="Bold" FontFamily="SimSun-ExtB"/>
-        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="726,161,0,0" Height="86" Width="61" FontSize="72" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
+        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="726,161,0,0" Height="86" Width="61" FontSize="72" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639" Foreground="Red">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,7 +26,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="O" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="803,162,0,0" Height="86" Width="67" FontSize="72" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
+        <Label Content="O" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="803,162,0,0" Height="86" Width="67" FontSize="72" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639" Foreground="Blue">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,7 +56,7 @@
                 </TransformGroup>
             </Separator.RenderTransform>
         </Separator>
-        <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="736,242,0,0" Height="75" Width="53" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
+        <Label x:Name="scoreX" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="738,250,0,0" Height="75" Width="53" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -66,17 +66,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="818,245,0,0" Height="75" Width="53" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="360.021"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="169,454,0,0" Height="53" Width="45" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
+        <Label x:Name="PlayerTurn" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="169,454,0,0" Height="69" Width="45" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639" Foreground="Red">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -131,6 +121,16 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Label x:Name="scoreO" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="818,250,0,0" Height="75" Width="53" FontSize="48" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="360.021"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </Window>

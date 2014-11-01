@@ -68,6 +68,7 @@ namespace tic_tac_toe
 
             if (logic.ChangeState(number))
                 change_button(button, currentPlayer);
+            
         }
 
         private void change_button(Control control, PlayerValue player)
@@ -81,11 +82,15 @@ namespace tic_tac_toe
             {
                 button.Foreground = Brushes.Blue;
                 button.Content = "O";
+                PlayerTurn.Foreground = Brushes.Red;
+                PlayerTurn.Content = "X";
             }
             else if (player == PlayerValue.Cross)
             {
                 button.Foreground = Brushes.Red;
                 button.Content = "X";
+                PlayerTurn.Foreground = Brushes.Blue;
+                PlayerTurn.Content = "O";
             }
             else
             {
