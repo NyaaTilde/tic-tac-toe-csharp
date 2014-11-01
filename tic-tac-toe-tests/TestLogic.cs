@@ -8,7 +8,7 @@ namespace tic_tac_toe_Tests
 	[TestClass()]
 	public class TestLogic
 	{
-		private bool eventCalled = false;
+		private int eventCalledTimes = 0;
 		private PlayerValue endState = PlayerValue.None;
 
 		[TestMethod()]
@@ -38,7 +38,7 @@ namespace tic_tac_toe_Tests
 
 		private void gameEndEvent(Logic l, PlayerValue who)
 		{
-			eventCalled = true;
+			eventCalledTimes += 1;
 			endState = who;
 		}
 
@@ -46,16 +46,16 @@ namespace tic_tac_toe_Tests
 		{
 			if (eventShouldHaveBeenCalled)
 			{
-				Assert.IsTrue(eventCalled);
+				Assert.AreEqual(1, eventCalledTimes);
 				Assert.AreEqual(player, endState);
 			}
 			else
 			{
-				Assert.IsFalse(eventCalled);
+				Assert.AreEqual(0, eventCalledTimes);
 			}
 
 			// Reset
-			eventCalled = false;
+			eventCalledTimes = 0;
 			endState = PlayerValue.None;
 		}
 
@@ -221,6 +221,29 @@ namespace tic_tac_toe_Tests
 			verifyEndState(l, false);
 			Assert.IsTrue(l.ChangeState(5));
 			verifyEndState(l, true, PlayerValue.None);
+
+			l = new Logic(); // new instance
+			l.OnGameEnd += gameEndEvent;
+
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(0));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(1));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(2));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(5));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(8));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(7));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(6));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(3));
+			verifyEndState(l, false);
+			Assert.IsTrue(l.ChangeState(4));
+			verifyEndState(l, true, PlayerValue.Cross);
 		}
 	}
 }

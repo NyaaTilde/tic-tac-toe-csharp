@@ -68,14 +68,13 @@ namespace tic_tac_toe
 
 			EndGameHandler endEvent = OnGameEnd;
 
-			if (endEvent != null && tied)
-				endEvent(this, PlayerValue.None);
-
 			// Check victory conditions
 			wonBy = checkVictoryConditions();
 
 			if (endEvent != null && wonBy != PlayerValue.None)
 				endEvent(this, wonBy);
+			else if (endEvent != null && tied)
+				endEvent(this, PlayerValue.None);
 
 			return true;
 		}
