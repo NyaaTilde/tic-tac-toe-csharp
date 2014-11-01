@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="640" Width="1020" Background="#FF23FFC3">
     <Grid Margin="0,0,0,3">
-        <Rectangle Fill="#FF0085F3" HorizontalAlignment="Left" Height="518" Margin="66,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="874" StrokeThickness="8"/>
+        <Rectangle Fill="#FF0085F3" HorizontalAlignment="Left" Height="518" Margin="54,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="874" StrokeThickness="8"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="244" Margin="388,80,0,0" RenderTransformOrigin="0.5,0.5" FontFamily="Viner Hand ITC" FontSize="48">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -13,16 +13,8 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </TextBlock.RenderTransform><Run Language="is-is" Text="TicTacToe"/></TextBlock>
-        <WrapPanel x:Name="button1" HorizontalAlignment="Left" Height="100" Margin="330,180,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button2" HorizontalAlignment="Left" Height="100" Margin="435,180,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button3" HorizontalAlignment="Left" Height="100" Margin="540,180,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button4" HorizontalAlignment="Left" Height="100" Margin="330,285,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button5" HorizontalAlignment="Left" Height="100" Margin="435,285,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button6" HorizontalAlignment="Left" Height="100" Margin="540,285,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button7" HorizontalAlignment="Left" Height="100" Margin="330,390,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button8" HorizontalAlignment="Left" Height="100" Margin="435,390,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <WrapPanel x:Name="button9" HorizontalAlignment="Left" Height="100" Margin="540,390,0,0" VerticalAlignment="Top" Width="100" Background="#FFF9C85D"/>
-        <Button Content="New Game" HorizontalAlignment="Left" Margin="701,436,0,0" VerticalAlignment="Top" Width="170" Height="54" FontSize="24" FontFamily="Showcard Gothic"/>
+        <Button x:Name="gameButton" Content="New Game" HorizontalAlignment="Left" Margin="701,436,0,0" VerticalAlignment="Top" Width="170" Height="54" FontSize="24" FontFamily="Showcard Gothic" Click="gameButton_Click"/>
+<!--<<<<<<< Updated upstream-->
         <Label Content="Player Turn: " HorizontalAlignment="Left" Margin="77,400,0,0" VerticalAlignment="Top" Height="72" Width="234" FontSize="36" Foreground="#FFAE0000" FontWeight="Bold" FontFamily="SimSun-ExtB"/>
         <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="726,161,0,0" Height="86" Width="61" FontSize="72" FontFamily="Microsoft Sans Serif" RenderTransformOrigin="0.717,0.639">
             <Label.RenderTransform>
@@ -94,6 +86,51 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Button x:Name="button0" Content="" HorizontalAlignment="Left" Margin="330,180,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="0">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="435,180,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="540,180,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="2">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="540,285,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="5">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="540,390,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="8">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="435,390,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="7">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="330,390,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="6">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="330,285,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="3">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="435,285,0,0" VerticalAlignment="Top" Width="100" Height="100" Background="#FFFFC55F" BorderBrush="{x:Null}" BorderThickness="0" IsTabStop="False" Foreground="Red" FontSize="60" Click="button_MouseLeftButtonUp" Tag="4">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>
