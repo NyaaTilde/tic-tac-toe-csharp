@@ -43,8 +43,6 @@ namespace tic_tac_toe
 				case PlayerValue.Cross:
 					lastMove = PlayerValue.Circle;
 					break;
-				default:
-					break;
 			}
 
 			gameState[box] = lastMove;
