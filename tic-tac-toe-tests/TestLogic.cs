@@ -194,7 +194,7 @@ namespace tic_tac_toe_Tests
 
 			l = new Logic(); // new instance
 
-			// Right column
+			// Top right to bottom left
 			Assert.IsFalse(l.tied);
 			Assert.AreEqual(l.wonBy, PlayerValue.None);
 			Assert.IsTrue(l.ChangeState(0));
