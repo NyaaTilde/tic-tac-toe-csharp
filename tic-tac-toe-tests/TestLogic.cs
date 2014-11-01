@@ -32,5 +32,222 @@ namespace tic_tac_toe_Tests
 			Assert.IsFalse(l.ChangeState(4));
 			Assert.IsFalse(l.ChangeState(0));
 		}
+
+		[TestMethod()]
+		public void LogicTestEndConditions()
+		{
+			Logic l = new Logic();
+
+			// Top row
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Cross);
+
+			l = new Logic(); // new instance
+
+			// Center row
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(6));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(7));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(5));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Cross);
+
+			l = new Logic(); // new instance
+
+			// Bottom row
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(6));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(7));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(8));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Cross);
+
+			l = new Logic(); // new instance
+
+			// Left column
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(6));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Circle);
+
+			l = new Logic(); // new instance
+
+			// Center column
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(7));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Circle);
+
+			l = new Logic(); // new instance
+
+			// Right column
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(5));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(8));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Circle);
+
+			l = new Logic(); // new instance
+
+			// Top left to bottom right
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(5));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(8));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Cross);
+
+			l = new Logic(); // new instance
+
+			// Right column
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(6));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.Circle);
+
+			l = new Logic(); // new instance
+
+			// Tie
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(8));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(7));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(1));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(2));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(6));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(3));
+			Assert.IsFalse(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+			Assert.IsTrue(l.ChangeState(5));
+			Assert.IsTrue(l.tied);
+			Assert.AreEqual(l.wonBy, PlayerValue.None);
+		}
 	}
 }
