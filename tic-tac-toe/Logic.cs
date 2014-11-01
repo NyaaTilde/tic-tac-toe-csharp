@@ -20,6 +20,9 @@ namespace tic_tac_toe
 		public PlayerValue   nextPlayer { get; private set; }
 		public bool          tied       { get; private set; }
 
+		public delegate void EndGameHandler(Logic l, PlayerValue who);
+		public event EndGameHandler OnGameEnd;
+
 		public Logic()
 		{
 			gameState = new PlayerValue[9];
@@ -63,8 +66,16 @@ namespace tic_tac_toe
 			// Check ending conditions
 			tied = checkTies();
 
+			EndGameHandler endEvent = OnGameEnd;
+
+			if (endEvent != null && tied)
+				endEvent(this, PlayerValue.None);
+
 			// Check victory conditions
 			wonBy = checkVictoryConditions();
+
+			if (endEvent != null && wonBy != PlayerValue.None)
+				endEvent(this, wonBy);
 
 			return true;
 		}
