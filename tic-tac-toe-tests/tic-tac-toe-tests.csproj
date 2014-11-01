@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>c55602e8-a5c2-475b-b456-f8f1650e778a</ProjectGuid>
+    <ProjectGuid>{2BF00348-6890-453B-89D3-451754DDC97D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tic_tac_toe_tests</RootNamespace>
