@@ -41,22 +41,32 @@ namespace tic_tac_toe
                 b.Content = "";
             PlayerTurn.Content = "X";
             PlayerTurn.Foreground = Brushes.Red;
+
+            turnLabel.Content = "Player Turn:";
+            PlayerTurn.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void game_victory(Logic l, PlayerValue who)
         {
             if (who == PlayerValue.Circle)
             {
-                MessageBox.Show("Cirles are best!");
+                turnLabel.Content = "Circles win!";
+                oWins++;
             }
             else if (who == PlayerValue.Cross)
             {
-                MessageBox.Show("Crosses are awesome!");
+                turnLabel.Content = "Crosses win!";
+                xWins++;
             }
             else
             {
-                MessageBox.Show("You both suck!");
+                turnLabel.Content = "Draw";
             }
+            
+            PlayerTurn.Visibility = System.Windows.Visibility.Hidden;
+
+            scoreX.Content = xWins.ToString();
+            scoreO.Content = oWins.ToString();
         }
 
         private void button_MouseLeftButtonUp(object sender, RoutedEventArgs e)
