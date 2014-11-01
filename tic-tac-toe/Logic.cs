@@ -15,18 +15,16 @@ namespace tic_tac_toe
 
 	public class Logic
 	{
-		public PlayerValue[] gameState { get; private set; }
-
-		public PlayerValue wonBy { get; private set; }
-
-		public bool tied { get; private set; }
-
-		private PlayerValue lastMove = PlayerValue.None;
+		public PlayerValue[] gameState  { get; private set; }
+		public PlayerValue   wonBy      { get; private set; }
+		public PlayerValue   nextPlayer { get; private set; }
+		public bool          tied       { get; private set; }
 
 		public Logic()
 		{
 			gameState = new PlayerValue[9];
 
+			nextPlayer = PlayerValue.Cross;
 			wonBy = PlayerValue.None;
 			tied = false;
 
@@ -50,18 +48,17 @@ namespace tic_tac_toe
 				tied == true)
 				return false;
 
-			switch (lastMove)
+			gameState[box] = nextPlayer;
+
+			switch (nextPlayer)
 			{
-				case PlayerValue.None:
-				case PlayerValue.Circle:
-					lastMove = PlayerValue.Cross;
-					break;
 				case PlayerValue.Cross:
-					lastMove = PlayerValue.Circle;
+					nextPlayer = PlayerValue.Circle;
+					break;
+				case PlayerValue.Circle:
+					nextPlayer = PlayerValue.Cross;
 					break;
 			}
-
-			gameState[box] = lastMove;
 
 			// Check ending conditions
 			tied = checkTies();
