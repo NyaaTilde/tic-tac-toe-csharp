@@ -17,6 +17,8 @@ namespace tic_tac_toe
 	{
 		public PlayerValue[] gameState { get; private set; }
 
+		private PlayerValue lastMove = PlayerValue.None;
+
 		public Logic()
 		{
 			gameState = new PlayerValue[9];
@@ -25,6 +27,29 @@ namespace tic_tac_toe
 			{
 				gameState[i] = PlayerValue.None;
 			}
+		}
+
+		public bool ChangeState(int box)
+		{
+			if (gameState[box] != PlayerValue.None)
+				return false;
+
+			switch (lastMove)
+			{
+				case PlayerValue.None:
+				case PlayerValue.Circle:
+					lastMove = PlayerValue.Cross;
+					break;
+				case PlayerValue.Cross:
+					lastMove = PlayerValue.Circle;
+					break;
+				default:
+					break;
+			}
+
+			gameState[box] = lastMove;
+
+			return true;
 		}
 	}
 }

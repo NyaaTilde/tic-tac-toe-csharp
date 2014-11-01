@@ -20,6 +20,17 @@ namespace tic_tac_toe_Tests
 			{
 				Assert.AreEqual(l.gameState[i], PlayerValue.None);
 			}
+
+			// Changing the state of a field that is set to PlayerValue.None is valid
+			Assert.IsTrue(l.ChangeState(4));
+			Assert.AreEqual(l.gameState[4], PlayerValue.Cross);
+
+			Assert.IsTrue(l.ChangeState(0));
+			Assert.AreEqual(l.gameState[0], PlayerValue.Circle);
+
+			// Changing the state of a field that has a value other than PlayerValue.None is not valid
+			Assert.IsFalse(l.ChangeState(4));
+			Assert.IsFalse(l.ChangeState(0));
 		}
 	}
 }
