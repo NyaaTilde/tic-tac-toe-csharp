@@ -59,191 +59,60 @@ namespace tic_tac_toe_Tests
 			endState = PlayerValue.None;
 		}
 
-		[TestMethod()]
-		public void LogicTestEndConditions()
+		private void logicTestGames(int[] moves, PlayerValue winner = PlayerValue.None)
 		{
 			Logic l = new Logic();
 			l.OnGameEnd += gameEndEvent;
 
-			// Top row
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, true, PlayerValue.Cross);
+			foreach (int move in moves)
+			{
+				verifyEndState(l, false);
+				Assert.IsTrue(l.ChangeState(move));
+			}
 
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			verifyEndState(l, true, winner);
+		}
+
+		[TestMethod()]
+		public void LogicTestEndConditions()
+		{
+			// Top row
+			logicTestGames(new int[] { 0, 3, 1, 4, 2 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 3, 0, 4, 1, 6, 2 }, PlayerValue.Circle);
 
 			// Center row
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(7));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(5));
-			verifyEndState(l, true, PlayerValue.Cross);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 3, 6, 4, 7, 5 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 0, 3, 1, 4, 6, 5 }, PlayerValue.Circle);
 
 			// Bottom row
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(7));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(8));
-			verifyEndState(l, true, PlayerValue.Cross);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 6, 0, 7, 1, 8 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 0, 6, 1, 7, 3, 8 }, PlayerValue.Circle);
 
 			// Left column
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, true, PlayerValue.Circle);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 0, 1, 3, 4, 6 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 1, 0, 2, 3, 4, 6 }, PlayerValue.Circle);
 
 			// Center column
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(7));
-			verifyEndState(l, true, PlayerValue.Circle);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 1, 2, 4, 5, 7 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 0, 1, 2, 4, 3, 7 }, PlayerValue.Circle);
 
 			// Right column
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(5));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(8));
-			verifyEndState(l, true, PlayerValue.Circle);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 2, 3, 5, 6, 8 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 0, 2, 1, 5, 3, 8 }, PlayerValue.Circle);
 
 			// Top left to bottom right
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(5));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(8));
-			verifyEndState(l, true, PlayerValue.Cross);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 0, 2, 4, 5, 8 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 1, 0, 2, 4, 3, 8 }, PlayerValue.Circle);
 
 			// Top right to bottom left
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, true, PlayerValue.Circle);
-
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
+			logicTestGames(new int[] { 2, 0, 4, 1, 6 }, PlayerValue.Cross);
+			logicTestGames(new int[] { 0, 2, 1, 4, 3, 6 }, PlayerValue.Circle);
 
 			// Tie
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(8));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(7));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(5));
-			verifyEndState(l, true, PlayerValue.None);
+			logicTestGames(new int[] { 0, 4, 8, 7, 1, 2, 6, 3, 5 });
 
-			l = new Logic(); // new instance
-			l.OnGameEnd += gameEndEvent;
-
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(0));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(1));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(2));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(5));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(8));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(7));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(6));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(3));
-			verifyEndState(l, false);
-			Assert.IsTrue(l.ChangeState(4));
-			verifyEndState(l, true, PlayerValue.Cross);
+			// Bug - Win and tie in the same move
+			logicTestGames(new int[] { 0, 1, 2, 5, 8, 7, 6, 3, 4 }, PlayerValue.Cross);
 		}
 	}
 }
